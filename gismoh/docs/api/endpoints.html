@@ -1,11 +1,11 @@
 <!DOCTYPE html>
 <html>
     <head>
-        <link rel="stylesheet" href="//brick.a.ssl.fastly.net/Source+Sans+Pro:400,700:f">
+        <link rel="stylesheet" href="//brick.a.ssl.fastly.net/Source+Sans+Pro:300,400,700:f">
         <link rel="stylesheet" href="/css/gismoh.css"/>
     </head>
     <body>
-        <h1>GisMOH - Endpoints</h1>
+        <h1>GisMOH API Documentation</h1>
 
         <ol class="breadcrumbs">
             <li><a href='/gismoh'>GisMOH</a></li>
@@ -19,6 +19,7 @@
         <section>
             <h2>Related Antibiograms</h2>
             <p class="url-stub">/api/antibiograms</p>
+            <h3>Description</h3>
             <p class="description">
                 Return a list of all isolates that are related to the specified isolate from the specified patient. Includes a similarity score for each isolate as compared to the query isolate.
             </p>
@@ -29,7 +30,7 @@
                 <dt>at_date</dt>
                 <dd>
                     <span class="type">
-                        date (string:<i>YYYY</i>-<i>MM</i>-<i>YY</i>T<i>HH</i>:<i>MM</i>:<i>SS</i>
+                        date (string:<i>YYYY</i>-<i>MM</i>-<i>YY</i>T<i>HH</i>:<i>MM</i>:<i>SS</i>)
                     </span> the current date time of the view. <em>I.e samples later than this date are excluded</em>
                 </dd>
                 <dt>isolate</dt>
@@ -43,11 +44,11 @@
             <dl class="object_properties">
                 <dt>Antibiogram</dt>
                 <dd>
-                    An <a href="/gismoh/api/object/Antibiogram">Antibiogram</a> object for this isolate
+                    An <a href="/gismoh/api/object/Antibiogram.html">Antibiogram</a> object for this isolate
                 </dd>
                 <dt>Isolate</dt>
                 <dd>
-                    The <a href="/gismoh/api/object/Antibiogram">Isolate</a>  information
+                    The <a href="/gismoh/api/object/Isolate.html">Isolate</a>  information
                 </dd>
             </dl>
         </section>
@@ -55,21 +56,138 @@
         <section>
             <h2>Location Overlaps</h2>
             <p class="url-stub">/api/overlaps</p>
+            <h3>Description</h3>
+            <p class="description">Returns a list of <a href="/api/objects/PatientLocation.html">Patient Locations</a> that overlap with the specified patient in a specified date range.</p>
+            <h3>Parameters</h3>
+            <dl class="parameters">
+                <dt>patient_id</dt>
+                    <dd><span class="type">int</span> The gismoh internal ID of the patient being queried</dd>
+                <dt>date_from</dt>
+                <dd>
+                    <span class="type">
+                        date (string:<i>YYYY</i>-<i>MM</i>-<i>YY</i>T<i>HH</i>:<i>MM</i>:<i>SS</i>)
+                    </span> 
+                    The date to begin looking for overlaps from
+                </dd>
+                <dt>date_to</dt>
+                <dd>
+                    <span class="type">
+                        date (string:<i>YYYY</i>-<i>MM</i>-<i>YY</i>T<i>HH</i>:<i>MM</i>:<i>SS</i>)
+                    </span> 
+                    The date to stop looking for overlaps
+                </dd>
+            </dl>
+            <h3>Return Object</h3>
+            <p>A JSON List of dictionaries of <a href="/api/objects/PatientLocation.html">Patient Location Objects</a></p>
         </section>
 
         <section>
             <h2>Locations of patients</h2>
             <p class="url-stub">/api/locations</p>
+            <h3>Description</h3>
+            <p class="description">Returns a list of all <a href="/api/objects/PatientLocation.html">Patient Locations</a> for a given date range </p>
+            <h3>Parameters</h3>
+            <dl class="parameters">
+                <dt>date_from</dt>
+                <dd>
+                    <span class="type">
+                        date (string:<i>YYYY</i>-<i>MM</i>-<i>YY</i>T<i>HH</i>:<i>MM</i>:<i>SS</i>)
+                    </span> 
+                    The date start date of the range
+                </dd>
+                <dt>date_to</dt>
+                <dd>
+                    <span class="type">
+                        date (string:<i>YYYY</i>-<i>MM</i>-<i>YY</i>T<i>HH</i>:<i>MM</i>:<i>SS</i>)
+                    </span>
+                    The end date of the range
+                </dd>
+            </dl>
+            <h3>Return Object</h3>
+            <p>A JSON List of dictionaries of <a href="/api/objects/PatientLocation.html">Patient Location Objects</a></p>
         </section>
 
         <section>
             <h2>Isolates for a Patient</h2>
             <p class="url-stub">/api/isolates</p>
+            <h3>Description</h3>
+            <p class="description">Returns a list of all <a href="/api/objects/Isolate.html">Isolates</a> taken from a patient withing the specified date range</p> 
+            <h3>Parameters</h3>
+            <dl class="parameters">
+                <dt>patient_id</dt>
+                    <dd><span class="type">int</span> The gismoh internal ID of the patient being queried</dd>
+                <dt>date_from</dt>
+                <dd>
+                    <span class="type">
+                        date (string:<i>YYYY</i>-<i>MM</i>-<i>YY</i>T<i>HH</i>:<i>MM</i>:<i>SS</i>)
+                    </span> 
+                    The start of the date range
+                </dd>
+                <dt>date_to</dt>
+                <dd>
+                    <span class="type">
+                        date (string:<i>YYYY</i>-<i>MM</i>-<i>YY</i>T<i>HH</i>:<i>MM</i>:<i>SS</i>)
+                    </span> 
+                    The end of the date range
+                </dd>
+            </dl>
+            <h3>Return Object</h3>
+            <p>A JSON List of dictionaries of <a href="/api/objects/Isolate.html">Isolate objects</a></p>
         </section>
 
         <section>
             <h2>Risk Patients</h2>
             <p class="url-stub">/api/risk_patients</p>
+            <h3>Description</h3>
+            <p class="description">Get a list of patients who have tested positive for MRSA in the last x days</p>
+            <h3>Parameters</h3>
+            <dl class="parameters">
+                <dt>days</dt>
+                    <dd><span class="type">int</span> The number of days to look back for positive tests</dd>
+                <dt>at_date</dt>
+                <dd>
+                    <span class="type">
+                        date (string:<i>YYYY</i>-<i>MM</i>-<i>YY</i>T<i>HH</i>:<i>MM</i>:<i>SS</i>)
+                    </span> 
+                    the current date or date to query
+                </dd>
+
+            </dl>
+            <h3>Return Object</h3>
+            <p>A JSON List of details of the patients found, the fields in the dictionary are described below</p>
+            <dl class="parameters">
+                <dt>patient_id</dt>
+                    <dd><span class="type">int</span> The internal GisMOH ID of the patient</dd>
+                <dt>patient_number</dt>
+                <dd>
+                    <span class="type">
+                       string
+                    </span> 
+                    The patients NHS Number if contained within the system, otherwise their hospital Number
+                </dd>
+                <dt>location</dt>
+                <dd>
+                    <span class="type">
+                       GisMOH.Location
+                    </span> 
+                    The Patient's current Location
+                </dd>
+                <dt>ab</dt>
+                <dd>
+                    <span class="type">
+                       GisMOH.Antibiogram
+                    </span> 
+                    The Antibiogram associated with the Patient's positive test
+                </dd>
+                <dt>type</dt>
+                <dd>
+                    <span class="type">
+                       string (positive or risk)
+                    </span> 
+                    Positive means the patient has tested positive for MRSA
+                </dd>
+
+            </dl>
         </section>
     </body>
 </html>
