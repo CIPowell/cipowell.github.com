@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <!--build:css cipowell.css-->
+        <link rel="stylesheet" href="//brick.a.ssl.fastly.net/Source+Sans+Pro:400,700:f">
+        <link rel="stylesheet" href="/css/main.css">
+        <link rel="stylesheet" href="/css/gismoh.css">
+        <!--endbuild-->
+    </head>
+    <body>
+        <h1>GisMOH - Endpoints</h1>
+
+        <ol class="breadcrumbs">
+            <li><a href='/gismoh'>GisMOH</a></li>
+            <li><a href='/gismoh/docs'>docs</a></li>
+            <li><a href='/gismoh/docs/api'>API</a></li>
+            <li>Endpoints</li>
+        </ol>
+
+        <p class="important">All the api endpoints below are read-only and only accept GET requests</p>
+
+        <section>
+            <h2>Related Antibiograms</h2>
+            <p class="url-stub">/api/antibiograms</p>
+            <p class="description">
+                Return a list of all isolates that are related to the specified isolate from the specified patient. Includes a similarity score for each isolate as compared to the query isolate.
+            </p>
+            <h3>Parameters</h3>
+            <dl class="arguments">
+                <dt>patient_id</dt>
+                <dd><span class="type">int</span> The internal GISMOH ID of the patient <em>Note: not NHS or Hospital Number</em></dd>
+                <dt>at_date</dt>
+                <dd>
+                    <span class="type">
+                        date (string:<i>YYYY</i>-<i>MM</i>-<i>YY</i>T<i>HH</i>:<i>MM</i>:<i>SS</i>
+                    </span> the current date time of the view. <em>I.e samples later than this date are excluded</em>
+                </dd>
+                <dt>isolate</dt>
+                <dd>
+                    <span class="type">int</span>
+                    The GISMOH internal ID of the Isolate we are interested in.
+                </dd>
+            </dl>
+            <h3>Return Object</h3>
+            <p class="format">JSON list/array of objects/dictionaries with fields as specified below</p>
+            <dl class="object_properties">
+                <dt>Antibiogram</dt>
+                <dd>
+                    An <a href="/gismoh/api/object/Antibiogram">Antibiogram</a> object for this isolate
+                </dd>
+                <dt>Isolate</dt>
+                <dd>
+                    The <a href="/gismoh/api/object/Antibiogram">Isolate</a>  information
+                </dd>
+            </dl>
+        </section>
+
+        <section>
+            <h2>Location Overlaps</h2>
+            <p class="url-stub">/api/overlaps</p>
+        </section>
+
+        <section>
+            <h2>Locations of patients</h2>
+            <p class="url-stub">/api/locations</p>
+        </section>
+
+        <section>
+            <h2>Isolates for a Patient</h2>
+            <p class="url-stub">/api/isolates</p>
+        </section>
+
+        <section>
+            <h2>Risk Patients</h2>
+            <p class="url-stub">/api/risk_patients</p>
+        </section>
+    </body>
+</html>
