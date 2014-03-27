@@ -17,27 +17,50 @@
         </div>
 
         <section id="api">
-            <h2>How to use</h2>
+            <h1>How to use</h1>
 
-            <h3>Initializing the Viewer</h3>
+            <h2>Initializing</h2>
             <p >
                 You only need 2 lines of code to get your phylocanvas instance up and running. One to initialize the viewer and a second to load the file.
             </p>
             <pre class="code">
 var phylocanvas = new PhyloCanvas.Tree(<i>div_name</i>); // initialize your tree viewer
 
-phylocanvas.load(<i>newick_file</i>); // load your tree file
-            </pre>
+phylocanvas.load(<i>newick_file</i>); // load your tree file</pre>
             <p></p>
 
-            <h3>API - Tree</h3>
-            <dl>
-                <dt class="code">.load(<i>filename</i>,<i>[tree name]</i>)</dt>
-                <dd>
+            <h2>API - Tree</h2>
+            <section>
+                <h3 class="code">.load(<i>filename/nwkstring</i>,<i>[tree_name]</i>,<i>[format]</i>)</h3>
+                <p>Parse a newick or nexus format string and draw the tree</p></p>
+                <h4>Arguments</h4>
+                <dl>
+                    <dt>filename (String)</dt>
+                    <dd>the name of the file you wish to open via AJAX or the NWK or Nexus String</dd>
 
-                </dd>
-            </dl>
+                    <dt>tree_name (String)</dt>
+                    <dd>If using nexus format, the name of the tree to draw. But default Phylocanvas picks the first tree</dd>
 
+                    <dt>format (nexus|newick)</dt>
+                    <dd>override the parsing algorithm for the string provided</dd>
+                </dl>
+            </section>
+
+            <section>
+                <h3 class="code">.displayLabels()</h3>
+                <p>Show the lables on the tree</p>
+                <button type="button" class="tree-control" id="displayLabels">
+                    Display Labels
+                </button>
+            </section>
+
+            <section>
+                <h3 class="code">.hideLabels()</h3>
+                <p>Hide the lables on the tree</p>
+                 <button class="tree-control" type="button" id="hideLabels">
+                    Hide Labels
+                </button>
+            </section>
         </section>
 
         <section id="faqs">
