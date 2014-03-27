@@ -1,18 +1,53 @@
 <!DOCTYPE html>
 <html>
     <head>
-        <link rel="stylesheet" href="//brick.a.ssl.fastly.net/Raleway:100,300,400,700:f">
-        <link rel="stylesheet" href="/css/phylocanvas.css"/>
+        <title>PhyloCanvas</title>
 
+        <meta name="viewport" content="width=device-width, user-scalable=no" />
+
+        <link rel="stylesheet" href="//brick.a.ssl.fastly.net/Raleway:100,300,400,500,700">
+        <link rel="stylesheet" href="/css/phylocanvas.css"/>
     </head>
     <body>
-        <h1>PhyloCavnas</h1>
-        <p>This is a demonstration of the HTML5 Tree-drawing widget PhyloCanvas</p>
-
+        <h1><span class="light">Phylo</span>Canvas</h1>
+        <p class="lead">This is a demonstration of the HTML5 Tree-drawing widget PhyloCanvas</p>
+        <p>PhyloCanvas is written entirely in browser-native JavaScript, using no external libraries, and uses the HTML5 Canvas element</p>
         <div id="phylo">
-
+            <!--PhyloCanvas will load here-->
         </div>
 
+        <section id="api">
+            <h2>How to use</h2>
+
+            <h3>Initializing the Viewer</h3>
+            <p >
+                You only need 2 lines of code to get your phylocanvas instance up and running. One to initialize the viewer and a second to load the file.
+            </p>
+            <pre class="code">
+var phylocanvas = new PhyloCanvas.Tree(<i>div_name</i>); // initialize your tree viewer
+
+phylocanvas.load(<i>newick_file</i>); // load your tree file
+            </pre>
+            <p></p>
+
+            <h3>API - Tree</h3>
+            <dl>
+                <dt class="code">.load(<i>filename</i>,<i>[tree name]</i>)</dt>
+                <dd>
+
+                </dd>
+            </dl>
+
+        </section>
+
+        <section id="faqs">
+            <h2>FAQs</h2>
+            <p class="question">Why Canvas and not SVG?</p>
+            <p class="answer">Both offer significant advantages, but ultimately at the start of the project (2011) the Canvas API was better supported across browers than inline SVG </p>
+        </section>
+
+
+        <a href="https://github.com/CIPowell/PhyloCanvas"><img style="position: absolute; top: 0; right: 0; border: 0;" src="https://camo.githubusercontent.com/a6677b08c955af8400f44c6298f40e7d19cc5b2d/68747470733a2f2f73332e616d617a6f6e6177732e636f6d2f6769746875622f726962626f6e732f666f726b6d655f72696768745f677261795f3664366436642e706e67" alt="Fork me on GitHub" data-canonical-src="https://s3.amazonaws.com/github/ribbons/forkme_right_gray_6d6d6d.png"></a>
 
         <script src="/js/phylo_demo.js"></script>
     </body>
