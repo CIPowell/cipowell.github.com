@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>GisMOH API - Endpoints</title>
+        <link rel="stylesheet" href="//brick.a.ssl.fastly.net/Source+Sans+Pro:300,400,700:f">
+        <link rel="stylesheet" href="/css/gismoh.css"/>
+    </head>
+    <body>
+        <h1>GisMOH API Documentation</h1>
+
+        <ol class="breadcrumbs">
+            <li><a href='/gismoh'>GisMOH</a></li>
+            <li><a href='/gismoh/docs'>docs</a></li>
+            <li><a href='/gismoh/docs/api'>API</a></li>
+            <li><a href='/gismoh/docs/objects'>API</a></li>
+            <li>Antibiogram</li>
+        </ol>
+
+        <p class="lead">
+            The Antibiogram Class is part of the Antibiogram module (/modules/Antibiogram.py).
+
+            <pre class="code">
+from modules.Antibiogram import Antibiogram
+
+antibiogram = Antibiogram()
+            </pre>
+        </p>
+
+        <h2>Attributes</h2>
+        <dl>
+            <dt>instance_id</dt>
+                <dd>The internal GisMOH ID of the Antibiogram object, also the Lab Number of the sample</dd>
+
+            <dt>isolate_id</dt>
+                <dd>The GisMOH ID of the Isolate tested</dd>
+
+            <dt>organism</dt>
+                <dd>The name of the Organism isolated</dd>
+
+            <dt>sir_results</dt>
+                <dd>A dictionary of key value pairs, where the key is the antibiotic name and the value Suceptable (S), Inconclusive/Intermediate (I) or Resistant (R)</dd>
+
+            <dt>sir_results_identifier</dt>
+                <dd>An MD5 hash of the sir_results for fast identification of identical Antibiograms</dd>
+
+            <dt>zone_size_results</dt>
+                <dd>The zone size observed for each antibiotic tested, </dd>
+
+            <dt>is_resistent</dt>
+                <dd>Does the test show any resistance</dd>
+
+            <dt>print_number</dt>
+                <dd>Definition TBC the number of the photograph?</dd>
+
+            <dt>date_tested</dt>
+                <dd>The date the test was completed</dd>
+        </dl>
+
+
+        <h2>Functions</h2>
+        <dl>
+            <dt>get_key_field()</dt>
+                <dd>Helper method for internal functions, inhereted and overwritten from GISMOH_Object, returns the key field (instance_id)</dd>
+
+            <dt>get_key()</dt>
+                <dd>Helper method for internal functions, inhereted and overwritten from GISMOH_Object, returns the value of instance_id</dd>
+
+            <dt>get_result_identifier()</dt>
+                <dd>calculate and return the MD5 has of the sir_result object for this antibiogram</dd>
+
+            <dt>from_dict(values)</dt>
+                <dd>Helper method for internal functions, inhereted and overwritten from GISMOH_Object, populate this object using the values from the supplied dictionary(values)</dd>
+
+            <dt>get_dict()</dt>
+                <dd>Helper method for internal functions, inhereted and overwritten from GISMOH_Object, return a dictionary of this objects properties</dd>
+
+            <dt>save(store)</dt>
+                <dd>Save the Antibiogam into the provided store, inhereted from GISMOH_Object</dd>
+
+            <dt class="static">find(store, isolate, tested_date)</dt>
+                <dd>Find an antibiogram in the store that belongs to isolate and was tested on tested_date </dd>
+        </dl>
+
+    </body>
+</html>
