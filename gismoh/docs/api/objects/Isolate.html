@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>GisMOH API - Endpoints</title>
+        <link rel="stylesheet" href="//brick.a.ssl.fastly.net/Source+Sans+Pro:300,400,700:f">
+        <link rel="stylesheet" href="/css/gismoh.css"/>
+    </head>
+    <body>
+        <h1>GisMOH API Documentation</h1>
+
+        <ol class="breadcrumbs">
+            <li><a href='/gismoh'>GisMOH</a></li>
+            <li><a href='/gismoh/docs'>docs</a></li>
+            <li><a href='/gismoh/docs/api'>API</a></li>
+            <li><a href='/gismoh/docs/objects'>objects</a></li>
+            <li>Isolate</li>
+        </ol>
+
+        <p class="lead">
+            The Isolate Class is part of the core GisMOH Store
+
+            <pre class="code">
+from store.Store import Isolate
+
+isolate = Isolate()
+            </pre>
+        </p>
+
+        <h2>Attributes</h2>
+        <dl>
+            <dt>lab_number</dt>
+                <dd class="arg-type string">The lab number of the isolate</dd>
+
+            <dt>patient_id</dt>
+                <dd class="arg-type int">The GisMOH ID of the Patient the isolate was taken from</dd>
+            
+            <dt>date_taken</dt>
+                <dd class="arg-type date">The date the isolate was taken from the patient</dd>
+
+            <dt>organism</dt>
+                <dd class="arg-type string">The name of the Organism isolated</dd>
+
+            <dt>sample_site</dt>
+                <dd class="arg-type string">Where, on the patient's body, was the sample taken from?</dd>
+
+            <dt>location</dt>
+                <dd class="arg-type string">Where, which ward/GPs office, was the sample taken from? </dd>
+
+            <dt>genotypic_resistance</dt>
+                <dd class="arg-type boolean">future proof, if using both Antibiogram and Genome data does the Genome predict resistance</dd>
+
+            <dt>phenotypic_resistance</dt>
+                <dd class="arg-type boolean">future proof, if using both Antibiogram and Genome data does the Antibiogram predict resistance</dd>
+
+            <dt>meta_data</dt>
+                <dd class="arg-type dict">Other data recorded with the sample.</dd>
+
+            
+        </dl>
+
+
+        <h2>Functions</h2>
+        <dl>
+            <dt>get_key_field()</dt>
+                <dd>Helper method for internal functions, inhereted and overwritten from GISMOH_Object, returns the key field (instance_id)</dd>
+
+            <dt>get_key()</dt>
+                <dd>Helper method for internal functions, inhereted and overwritten from GISMOH_Object, returns the value of instance_id</dd>
+
+            <dt>get_result_identifier()</dt>
+                <dd>calculate and return the MD5 has of the sir_result object for this antibiogram</dd>
+
+            <dt>from_dict(values)</dt>
+                <dd>Helper method for internal functions, inhereted and overwritten from GISMOH_Object, populate this object using the values from the supplied dictionary(values)</dd>
+
+            <dt>get_dict()</dt>
+                <dd>Helper method for internal functions, inhereted and overwritten from GISMOH_Object, return a dictionary of this objects properties</dd>
+
+            <dt>save(store)</dt>
+                <dd>Save the Antibiogam into the provided store, inhereted from GISMOH_Object</dd>
+
+            <dt class="static">find(store, isolate, tested_date)</dt>
+                <dd>Find an antibiogram in the store that belongs to isolate and was tested on tested_date </dd>
+        </dl>
+
+    </body>
+</html>

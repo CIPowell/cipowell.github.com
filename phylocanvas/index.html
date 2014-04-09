@@ -30,46 +30,143 @@ phylocanvas.load(<i>newick_file</i>); // load your tree file</pre>
             <p></p>
 
             <h2>API - Tree</h2>
-            <section>
-                <h3 class="code">.load(<i>filename/nwkstring</i>,<i>[tree_name]</i>,<i>[format]</i>)</h3>
-                <p>Parse a newick or nexus format string and draw the tree</p></p>
-                <h4>Arguments</h4>
                 <dl>
-                    <dt>filename (String)</dt>
-                    <dd>the name of the file you wish to open via AJAX or the NWK or Nexus String</dd>
+                    <dt class="code">.load(<i>filename/nwkstring</i>,<i>[tree_name]</i>,<i>[format]</i>)</dt>
+                        <dd>
+                            <p>Parse a newick or nexus format string and draw the tree</p></p>
+                            <h4>Arguments</h4>
+                            <dl>
+                                <dt>filename (String)</dt>
+                                <dd>the name of the file you wish to open via AJAX or the NWK or Nexus String</dd>
 
-                    <dt>tree_name (String)</dt>
-                    <dd>If using nexus format, the name of the tree to draw. But default Phylocanvas picks the first tree</dd>
+                                <dt>tree_name (String)</dt>
+                                <dd>If using nexus format, the name of the tree to draw. But default Phylocanvas picks the first tree</dd>
 
-                    <dt>format (nexus|newick)</dt>
-                    <dd>override the parsing algorithm for the string provided</dd>
-                </dl>
-            </section>
+                                <dt>format (nexus|newick)</dt>
+                                <dd>override the parsing algorithm for the string provided</dd>
+                            </dl>
+                        </dd>
+                    <dt class="code">.displayLabels()</dt>
+                        <dd>
+                            <p>Show the lables on the tree</p>
+                            <form>
+                                <input type="hidden" name="test" value="test" />
+                                <button type="button" class="tree-control" id="displayLabels">
+                                    Display Labels
+                                </button>
+                            </form>
+                        </dd>
 
-            <section>
-                <h3 class="code">.displayLabels()</h3>
-                <p>Show the lables on the tree</p>
-                <form>
-                    <input type="hidden" name="test" value="test" />
-                    <button type="button" class="tree-control" id="displayLabels">
-                        Display Labels
-                    </button>
-                </form>
-            </section>
+                    <dt class="code">.hideLabels()</dt>
+                        <dd>
+                            <p>Hide the lables on the tree</p>
+                             <button class="tree-control" type="button" id="hideLabels">
+                                Hide Labels
+                            </button>
+                        </dd>
 
-            <section>
-                <h3 class="code">.hideLabels()</h3>
-                <p>Hide the lables on the tree</p>
-                 <button class="tree-control" type="button" id="hideLabels">
-                    Hide Labels
-                </button>
-            </section>
+                    <dt class="code">.setTreeType(<i>type</i>)</dt>
+                        <dd>
+                            <p>Hide the lables on the tree</p>
+                            <h4>Arguments</h4>
+                            <dl>
+                                <dt>type (String)</dt>
+                                <dd>
+                                    the name of the type of tree to change to (rectangular, radial, circular, diagonal, hierarchy)
+                                    <button class="tree-type-control" type="button" pc-tree-type="rectangular" id="treeTypeRectangular">
+                                        Rectangular
+                                    </button>
+                                    <button class="tree-type-control" type="button" pc-tree-type="radial" id="treeTypeRadial">
+                                        Radial
+                                    </button>
+                                    <button class="tree-type-control" type="button" pc-tree-type="circular" id="treeTypeCircular">
+                                        Circular
+                                    </button>
+                                    <button class="tree-type-control" type="button" pc-tree-type="diagonal" id="treeTypeDiagonal">
+                                        Diagonal
+                                    </button>
+                                    <button class="tree-type-control" type="button" pc-tree-type="hierarchy" id="treeTypeHierarchy">
+                                        Hierarchy
+                                    </button>
+                                </dd>
+                            </dl>
+                        </dd>
+            </dl>
         </section>
+
+        <section id="events">
+            <a name="events"><h2>Events</h2></a>
+            <p>PhyloCanvas exposes a number of events that allow web pages to change according to activity within PhyoCanvas. The API also exposes a couple of helper methods to enable binding of events to the API.</p>
+            <h3>Helper Methods</h3>
+            <dl>
+                <dt>Tree.on(<i>event name</i>, <i>handler</i>)</dt>
+                <dt>Tree.addListener(<i>event name</i>, <i>handler</i>)</dt>
+                    <dd>add the specified <i>handler</i> to the specified <i>event name</i></dd>
+                <dt>TODO : Tree.removeListener/Tree.off</dt>
+            </dl>
+
+            <h3>Events</h3>
+            <dl>
+                <dt>loading</dt>
+                    <dd>Fires when the widget starts loading a file via AJAX</dd>
+
+                <dt>loaded</dt>
+                    <dd>Fires when a tree has completed loading.</dd>
+
+                <dt>error</dt>
+                    <dd>
+                        Fires if an error is encountered by the loading or parsing process
+                        <h4>Properties</h4>
+                        <dl>
+                            <dt>message</dt>
+                                <dd>The Error message</dd>
+                        </dl>
+                    </dd>
+
+                <dt>subtree</dt>
+                    <dd>
+                        Fires when the user draws a subtree
+                        <h4>Properties</h4>
+                        <dl>
+                            <dt>node</dt>
+                                <dd>The id of the node chosen as the new root</dd>
+                        </dl>
+                    </dd>
+
+                <dt>typechanged</dt>
+                    <dd>
+                        Fires when the tree type is changed
+                        <h4>Properties</h4>
+                        <dl>
+                            <dt>oldType</dt>
+                                <dd>The name of the type of tree that was being displayed before the type was changed</dd>
+
+                            <dt>newType</dt>
+                                <dd>The name of the type of tree that the view was changed to</dd>
+                        </dl>
+                    </dd>
+
+                <dt>selected</dt>
+                    <dd>
+                        Fires when the user selectes node(s)
+                        <h4>Properties</h4>
+                        <dl>
+                            <dt>nodes</dt>
+                                <dd>An Array of the IDs of selected node</dd>
+                        </dl>
+                    </dd>
+
+
+            </dl>
+
+        </section>
+
 
         <section id="faqs">
             <h2>FAQs</h2>
             <p class="question">Why Canvas and not SVG?</p>
-            <p class="answer">Both offer significant advantages, but ultimately at the start of the project (2011) the Canvas API was better supported across browers than inline SVG </p>
+            <p class="answer">There are pros and cons to both, but ultimately at the start of the project (2011) the Canvas API was better supported
+                across browers than inline SVG </p>
         </section>
 
 
